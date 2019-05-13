@@ -32,7 +32,7 @@ namespace MVCProject.Controllers
             }
             else
             {
-                ViewBag.msg = "Stuent Couldn't saved";
+                ViewBag.msg = "Student Couldn't saved";
             }
             return View();
         }
@@ -44,5 +44,20 @@ namespace MVCProject.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EditStudent(int id)
+        {
+            StudentManager studentManager = new StudentManager();
+            ViewBag.student = studentManager.GetStudentByID((int)id);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditStudent(Student student)
+        {
+            StudentManager studentManager = new StudentManager();
+            bool isUpdated = studentManager.UpdateStudent(student);
+            return RedirectToAction("ShowStudents");
+        }
     }
 }

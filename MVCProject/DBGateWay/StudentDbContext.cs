@@ -46,5 +46,46 @@ namespace MVCProject.DBGateWay
             }
             return studentList;
         }
+
+        public Student GetStudentByID(int id)
+        {
+            Student student = null;
+            using (Connection)
+            {
+                string Query = "select * from student where id=" + id;
+                Command = new System.Data.SqlClient.SqlCommand(Query, Connection);
+                Connection.Open();
+                Reader = Command.ExecuteReader();
+                Reader.Read();
+                if (Reader.HasRows)
+                {
+                    student = new Student();
+                    student.Id = (int)Reader["id"];
+                    student.Name = Reader["Name"].ToString();
+                    student.Email = Reader["Email"].ToString();
+                    student.RegiNo = Reader["RegiNo"].ToString();
+                    student.MobileNo = Reader["MobileNo"].ToString();
+                }
+            }
+            return student;
+
+        }
+        public bool UpdateStudent(Student student)
+        {
+            using (Connection)
+            {
+                string Query = "Update Student Set Regino='"+student.RegiNo+ "',Name='" + student.Name + "',Email='" + student.Email + "',MobileNo='" + student.MobileNo + "' Where id=" + student.Id;
+                Command = new System.Data.SqlClient.SqlCommand(Query, Connection);
+                Connection.Open();
+                int rowsAfected = Command.ExecuteNonQuery();
+                if (rowsAfected > 0)
+                {
+                    return true;
+                }
+                
+            }
+            return false;
+
+        }
     }
 }

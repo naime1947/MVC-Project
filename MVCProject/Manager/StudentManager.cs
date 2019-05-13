@@ -23,5 +23,16 @@ namespace MVCProject.Manager
             return studentDb.GetAllStudents();
 
         }
+
+        public Student GetStudentByID(int id)
+        {
+            studentDb = new StudentDbContext();
+            return studentDb.GetStudentByID(id);
+        }
+        public bool UpdateStudent(Student student)
+        {
+            studentDb = new StudentDbContext();
+            return studentDb.UpdateStudent(student);
+        }
     }
 }
