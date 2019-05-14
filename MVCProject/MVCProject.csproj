@@ -129,11 +129,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DBGateWay\DBContext.cs" />
+    <Compile Include="DBGateWay\DepartmentDBContext.cs" />
     <Compile Include="DBGateWay\StudentDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Manager\DepartmentManager.cs" />
     <Compile Include="Manager\StudentManager.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\ViewModel\StudentWithDepartment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

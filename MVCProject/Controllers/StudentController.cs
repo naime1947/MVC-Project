@@ -11,6 +11,7 @@ namespace MVCProject.Controllers
     public class StudentController : Controller
     {
         StudentManager studentManager = new StudentManager();
+        DepartmentManager departmentManager = new DepartmentManager();
         // GET: Student
         public ActionResult Index()
         {
@@ -20,12 +21,13 @@ namespace MVCProject.Controllers
         [HttpGet]
         public ActionResult AddStudent()
         {
+            ViewBag.DepartmentList = departmentManager.GetDepartmentList();
             return View();
         }
         [HttpPost]
         public ActionResult AddStudent(Student student)
         {
-            
+            ViewBag.DepartmentList = departmentManager.GetDepartmentList();
             bool isSaved = studentManager.Save(student);
             if (isSaved)
             {
@@ -48,8 +50,12 @@ namespace MVCProject.Controllers
         [HttpGet]
         public ActionResult EditStudent(int id)
         {
-            
-            ViewBag.student = studentManager.GetStudentByID((int)id);
+            List<Department>departmentList = departmentManager.GetDepartmentList();
+            Department department = departmentList.Find(dept => dept.Id == id);
+
+            ViewBag.DepartmentList = departmentList;
+            ViewBag.Department = department;
+            ViewBag.Student = studentManager.GetStudentByID((int)id);
             return View();
         }
 

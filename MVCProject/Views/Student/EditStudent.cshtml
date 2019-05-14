@@ -27,6 +27,20 @@
             <input type="text" class="form-control" id="MobileNo" name="MobileNo" value="@ViewBag.student.MobileNo" required>
         </div>
         <div class="form-group">
+            <label for="DepartmentId">Department</label>
+            <select class="form-control text-center" id="DepartmentId" name="DepartmentId" required>
+                <option selected value="@ViewBag.Department.Id">@ViewBag.Department.Code</option>
+                @foreach (MVCProject.Models.Department department in ViewBag.DepartmentList)
+                {
+                    if (department.Id == ViewBag.Department.Id)
+                    {
+                        continue;
+                    }
+                    <option value="@department.Id">@department.Code</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
             <input role="button" class="btn-success btn-lg btn-block" type="submit" value="Update" />
         </div>
     </form>

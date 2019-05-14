@@ -11,7 +11,7 @@ namespace MVCProject.DBGateWay
     {
         public bool Save(Student student)
         {
-            Query = "Insert into Student Values('" + student.RegiNo + "','" + student.Name + "','" + student.Email + "','" + student.MobileNo + "')";
+            Query = "Insert into Student Values('" + student.RegiNo + "','" + student.Name + "','" + student.Email + "','" + student.MobileNo + "','"+student.DepartmentId+"')";
             Command = new System.Data.SqlClient.SqlCommand(Query, Connection);
             Connection.Open();
             int rowsAffected = Command.ExecuteNonQuery();
@@ -72,7 +72,7 @@ namespace MVCProject.DBGateWay
         public bool UpdateStudent(Student student)
         {
 
-            Query = "Update Student Set Regino='" + student.RegiNo + "',Name='" + student.Name + "',Email='" + student.Email + "',MobileNo='" + student.MobileNo + "' Where id=" + student.Id;
+            Query = "Update Student Set Regino='" + student.RegiNo + "',Name='" + student.Name + "',Email='" + student.Email + "',MobileNo='" + student.MobileNo + "',DepartmentId='"+student.DepartmentId+"' Where id=" + student.Id;
             Command = new System.Data.SqlClient.SqlCommand(Query, Connection);
             Connection.Open();
             int rowsAfected = Command.ExecuteNonQuery();
