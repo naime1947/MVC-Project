@@ -10,6 +10,7 @@ namespace MVCProject.Controllers
 {
     public class StudentController : Controller
     {
+        StudentManager studentManager = new StudentManager();
         // GET: Student
         public ActionResult Index()
         {
@@ -24,7 +25,7 @@ namespace MVCProject.Controllers
         [HttpPost]
         public ActionResult AddStudent(Student student)
         {
-            StudentManager studentManager = new StudentManager();
+            
             bool isSaved = studentManager.Save(student);
             if (isSaved)
             {
@@ -39,15 +40,15 @@ namespace MVCProject.Controllers
 
         public ActionResult ShowStudents()
         {
-            StudentManager studentManager = new StudentManager();
-            ViewBag.studentList = studentManager.GetAllStudents();
+
+            ViewBag.StudentWithDeptList = studentManager.GetStudentWithDepartmentList();
             return View();
         }
 
         [HttpGet]
         public ActionResult EditStudent(int id)
         {
-            StudentManager studentManager = new StudentManager();
+            
             ViewBag.student = studentManager.GetStudentByID((int)id);
             return View();
         }
@@ -55,7 +56,7 @@ namespace MVCProject.Controllers
         [HttpPost]
         public ActionResult EditStudent(Student student)
         {
-            StudentManager studentManager = new StudentManager();
+            
             bool isUpdated = studentManager.UpdateStudent(student);
             return RedirectToAction("ShowStudents");
         }

@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="Manager\StudentManager.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\ViewModel\StudentWithDepartment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using MVCProject.DBGateWay;
 using MVCProject.Models;
+using MVCProject.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,30 +10,35 @@ namespace MVCProject.Manager
 {
     public class StudentManager
     {
-        private StudentDbContext studentDb;
+        private StudentDbContext studentDb = new StudentDbContext();
         public bool Save(Student student)
         {
-            studentDb = new StudentDbContext();
+            
             return studentDb.Save(student);
             
         }
 
         public List<Student> GetAllStudents()
         {
-            studentDb = new StudentDbContext();
+            
             return studentDb.GetAllStudents();
 
         }
 
         public Student GetStudentByID(int id)
         {
-            studentDb = new StudentDbContext();
+            
             return studentDb.GetStudentByID(id);
         }
         public bool UpdateStudent(Student student)
         {
-            studentDb = new StudentDbContext();
+            
             return studentDb.UpdateStudent(student);
+        }
+
+        public List<StudentWithDepartment> GetStudentWithDepartmentList()
+        {
+            return studentDb.GetStudentWithDepartmentList();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace MVCProject.DBGateWay
         protected SqlDataReader Reader { get; set; }
         protected SqlCommand Command { get; set; }
         protected SqlDataAdapter sqlDataAdapter { get; set; }
+        protected string Query { get; set; }
 
         public DBContext()
         {

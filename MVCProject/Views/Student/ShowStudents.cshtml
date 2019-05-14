@@ -1,4 +1,4 @@
-﻿@model MVCProject.Models.Student
+﻿@model MVCProject.Models.ViewModel.StudentWithDepartment
 @{
     ViewBag.Title = "ShowStudents";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,25 +8,29 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">Sl#</th>
             <th scope="col">Regi No</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Mobile No</th>
+            <th scope="col">Department Code</th>
+            <th scope="col">Department Name</th>
             <th scope="col">Edit</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var student in ViewBag.studentList)
+        @foreach (MVCProject.Models.ViewModel.StudentWithDepartment studentWithDepartment in ViewBag.StudentWithDeptList)
         {
-            <tr>
-                <th>@student.Id</th>
-                <td>@student.RegiNo</td>
-                <td>@student.Name</td>
-                <td>@student.Email</td>
-                <td>@student.MobileNo</td>
-                <td><a href="~/student/editstudent?id=@student.Id">Edit</a></td>
-            </tr>
+        <tr>
+            <th>@studentWithDepartment.StudentId</th>
+            <td>@studentWithDepartment.RegiNo</td>
+            <td>@studentWithDepartment.Name</td>
+            <td>@studentWithDepartment.Email</td>
+            <td>@studentWithDepartment.MobileNo</td>
+            <td>@studentWithDepartment.DeptCode</td>
+            <td>@studentWithDepartment.DeptName</td>
+            <td><a href="~/student/editstudent?id=@studentWithDepartment.StudentId">Edit</a></td>
+        </tr>
         }
     </tbody>
 </table>
